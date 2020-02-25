@@ -5,9 +5,7 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.ServerSocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.FixedLengthFrameDecoder;
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import io.netty.handler.codec.LengthFieldPrepender;
+import io.netty.handler.codec.*;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
@@ -26,8 +24,10 @@ public class TCPServerInitializer extends ChannelInitializer<NioSocketChannel> {
         /**拿到通信管道*/
         ChannelPipeline channelPipeline = ch.pipeline();
         /**给管道设置各种拦截器*/
-        channelPipeline.addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,0,4,0,4));
-        channelPipeline.addLast(new LengthFieldPrepender(4));
+        /**聊天时需要使用DelimiterBasedFrame这个解码器*/
+//        channelPipeline.addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,0,4,0,4));
+//        channelPipeline.addLast(new LengthFieldPrepender(4));
+        channelPipeline.addLast(new DelimiterBasedFrameDecoder(4096, Delimiters.lineDelimiter()));
         channelPipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
         channelPipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
         channelPipeline.addLast(new TCPServerHandler());

@@ -1,8 +1,8 @@
-package com.jhhg.nova.chat;
+package com.jhhg.nova.idle;
 
+import com.jhhg.nova.chat.TCPClientInitializer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
  * @Date: 2020/2/23 下午5:27
  * @version : V1.0
  */
-public class TCPClient {
+public class IdleStateClient {
 
     public static void main(String[] args) throws Exception {
 

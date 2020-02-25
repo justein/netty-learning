@@ -17,12 +17,7 @@ public class TCPClientHandler extends SimpleChannelInboundHandler<String> {
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         System.out.println("接收到："+msg);
 
-        ctx.writeAndFlush("我是客户端："+LocalDateTime.now());
     }
 
-    @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
 
-        ctx.writeAndFlush("我先日你一波");
-    }
 }
