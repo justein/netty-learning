@@ -18,6 +18,7 @@ public class AdminBoot extends BootJob {
     public void stop() {
         System.out.println("AdminBoot stop...");
         stopNext();
+
     }
 
 

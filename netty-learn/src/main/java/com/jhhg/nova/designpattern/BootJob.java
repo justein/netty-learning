@@ -23,14 +23,14 @@ public abstract class BootJob {
     public void startNext() {
         if (next!=null) {
             next.start();
-            System.out.println("组件："+next.getName()+"启动！");
+
         }
     }
 
     public void stopNext() {
         if (next!=null) {
             next.stop();
-            System.out.println("组件："+next.getName()+"停止！");
+
         }
     }
 
